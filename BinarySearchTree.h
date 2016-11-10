@@ -113,6 +113,14 @@ template<class ItemType>
 BinaryNode<ItemType> *BinarySearchTree<ItemType>::insertInorder(BinaryNode<ItemType> *subTreePtr,
                                                                 BinaryNode<ItemType> *newNodePtr) {
     //TODO
+    if(subTreePtr == nullptr)
+        return newNodePtr;
+    else{
+        if(subTreePtr->getItem() > newNodePtr->getItem())
+            subTreePtr->setLeftChildPtr(insertInorder(subTreePtr->getLeftChildPtr(), newNodePtr));
+        else
+            subTreePtr->setRightChildPtr(insertInorder(subTreePtr->getRightChildPtr(), newNodePtr));
+    }
 }  // end insertInorder
 
 template<class ItemType>
